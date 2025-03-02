@@ -15,7 +15,7 @@ export class TabTitleService {
     private clockService: ClockService
   ) {}
 
-  startListening() {
+  start() {
     this.clockSubscription = this.clockService
       .getClockState$()
       .subscribe((state) => {

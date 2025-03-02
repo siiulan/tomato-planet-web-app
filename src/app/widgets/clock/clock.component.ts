@@ -72,7 +72,8 @@ export class ClockComponent implements OnInit, OnDestroy {
       .subscribe((state) => {
         this.tomatoClockLogic(state);
       });
-    this.tabTitleService.startListening(); // Start updating tab title
+    this.tabTitleService.start();
+    this.notificationService.start();
   }
 
   ngOnDestroy() {
