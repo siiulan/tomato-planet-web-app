@@ -1,0 +1,71 @@
+<div class="timer-container">
+  <div class="time-display">
+    <div class="progress-ring-container">
+      <img
+        src="assets/ui-elements/clock-circle-bg.svg"
+        alt="Progress Ring"
+        class="clock-bg"
+      />
+
+      <!-- <svg class="progress-ring" viewBox="0 0 450 450">
+        <circle
+          class="progress-ring-circle"
+          cx="225"
+          cy="225"
+          r="200"
+          stroke-width="25"
+          stroke-linecap="round"
+          fill="none"
+          stroke="url(#paint0_radial_74_7)"
+          [attr.stroke-dasharray]="circumference"
+          [attr.stroke-dashoffset]="progressOffset"
+        />
+        <defs>
+          <radialGradient
+            id="paint0_radial_74_7"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(225 225) rotate(171.469) scale(225)"
+          >
+            <stop offset="0.815" stop-color="#2E638E" />
+            <stop offset="1" stop-color="#65CCFF" />
+          </radialGradient>
+        </defs>
+      </svg> -->
+      <div class="clock-state-container">
+        <span class="display-text">{{
+          clockstate.remainingTime | timeFormat
+        }}</span>
+        <div class="mode-text" *ngIf="canDisplayPauseButton()" @fadeInOut>
+          {{ mode }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button
+      class="play-button"
+      (click)="startClock()"
+      *ngIf="canDisplayStartButton()"
+    >
+      <i class="bi bi-play-fill"></i>
+    </button>
+    <button
+      class="pause-button"
+      (click)="pauseClock()"
+      *ngIf="canDisplayPauseButton()"
+    >
+      <i class="bi bi-pause"></i>
+    </button>
+    <button
+      class="stop-button"
+      [ngClass]="{ disabled: canDisableStopButton() }"
+      (click)="stopClock()"
+    >
+      <i class="bi bi-stop-fill"></i>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.nav-container {
+  width: 100%;
+  height: var(--navbar-height);
+  background-color: transparent;
+  padding: 10px 20px;
+}
+
+.logo {
+  height: 48px;
+}

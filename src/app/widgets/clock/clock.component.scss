@@ -1,0 +1,96 @@
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10vh; /* Space between timer and controls */
+}
+
+.progress-ring-container {
+  position: relative;
+  width: 50vw; /* Customize the size */
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Bottom layer */
+}
+
+.progress-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Above background, below text */
+  transform: rotate(-90deg); /* Rotate so it starts at the top */
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.clock-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // gap: 1rem;
+  color: var(--text-color);
+  position: relative;
+}
+
+.display-text {
+  font-size: 4rem;
+  font-weight: bold;
+  z-index: 3; /* Foreground layer */
+}
+
+.mode-text {
+  position: absolute;
+  top: 5rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  width: 50px; /* Adjust size */
+  height: 50px;
+  border-radius: 50%; /* Makes it a perfect circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem; /* Adjust icon size */
+  transition: all 0.3s ease-in-out;
+  color: var(--button-text-color);
+  z-index: 2; /* Foreground layer */
+}
+
+button.play-button {
+  background-color: var(--play-button-color);
+}
+
+button.pause-button {
+  background-color: var(--pause-button-color);
+}
+
+button.stop-button {
+  background-color: var(--stop-button-color);
+}
+
+button.disabled {
+  background-color: var(--disabled-button-color);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
