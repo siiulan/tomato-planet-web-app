@@ -63,7 +63,6 @@ export class ClockService {
   }
 
   setClockState(state: ClockState) {
-    console.log('setting', state);
     this.clockState.next(state);
   }
 

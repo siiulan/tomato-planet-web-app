@@ -86,7 +86,6 @@ export class ClockComponent implements OnInit, OnDestroy {
   private tomatoClockLogic(state: ClockState) {
     const prevState = _.cloneDeep(this.clockstate);
     this.clockstate = state;
-    console.log('state update', state, this);
     switch (prevState.status) {
       case ClockStatus.Stopped:
       case ClockStatus.Resting:
