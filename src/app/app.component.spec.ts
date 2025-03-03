@@ -5,12 +5,8 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -20,16 +16,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'potato-planet-web-app'`, () => {
+  it(`should have as title 'tomato-planet-web-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('potato-planet-web-app');
+    expect(app.title).toEqual('tomato-planet-web-app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, potato-planet-web-app');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Hello, tomato-planet-web-app'
+    );
   });
 });
