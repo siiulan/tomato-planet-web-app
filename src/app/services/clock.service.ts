@@ -7,10 +7,8 @@ import { state } from '@angular/animations';
   providedIn: 'root',
 })
 export class ClockService {
-  private clockConfig: ClockConfig = {
-    focusTime: 0.2 * 60,
-    restTime: 0.1 * 60,
-  };
+  private readonly STORAGE_KEY = 'clockConfig';
+  private clockConfig: ClockConfig = this.loadClockConfig();
   private clockState: BehaviorSubject<ClockState> =
     new BehaviorSubject<ClockState>({
       status: ClockStatus.Stopped,
@@ -20,6 +18,23 @@ export class ClockService {
   private timer: any;
 
   constructor() {}
+
+  // Load config from local storage (fallback to default values)
+  private loadClockConfig(): ClockConfig {
+    const storedConfig = localStorage.getItem(this.STORAGE_KEY);
+    if (storedConfig) {
+      return JSON.parse(storedConfig);
+    }
+    return {
+      focusTime: 25 * 60,
+      restTime: 5 * 60,
+    };
+  }
+
+  // Save config to local storage
+  private saveClockConfig() {
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.clockConfig));
+  }
 
   getClockConfig() {
     return this.clockConfig;
@@ -37,6 +52,7 @@ export class ClockService {
     const curState = this.getClockState();
     if (curState.status === ClockStatus.Stopped) {
       this.clockConfig = clockConfig;
+      this.saveClockConfig();
       this.setClockState({
         ...curState,
         remainingTime: this.clockConfig.focusTime,

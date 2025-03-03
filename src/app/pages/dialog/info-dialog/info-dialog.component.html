@@ -15,7 +15,19 @@
       src="https://avatars.githubusercontent.com/u/54810735?s=400&u=8a3cd84dd0dda0d802c77d45db98dd427f6a5232&v=4"
       alt="Author Logo"
     />
-    <div class="contact-list"></div>
+  </div>
+  <div class="button-list">
+    <button (click)="openLink('https://github.com/siiulan')">
+      <i class="bi bi-github"></i>
+    </button>
+    <button
+      (click)="openLink('https://www.linkedin.com/in/ryan-gao-752a3715a/')"
+    >
+      <i class="bi bi-linkedin"></i>
+    </button>
+    <button (click)="sendEmail()">
+      <i class="bi bi-envelope"></i>
+    </button>
   </div>
 </mat-dialog-content>
 <!-- <mat-dialog-actions>

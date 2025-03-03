@@ -9,4 +9,12 @@ import { APP_VERSION, RELEASE_DATE } from '../../../../version';
 export class InfoDialogComponent {
   version = APP_VERSION;
   releaseDate = RELEASE_DATE;
+
+  openLink(url: string) {
+    window.open(url, '_blank'); // Opens link in a new tab
+  }
+
+  sendEmail() {
+    window.location.href = 'zhiyue990709@gmail.com';
+  }
 }
