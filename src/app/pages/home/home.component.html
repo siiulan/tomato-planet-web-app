@@ -1,3 +1,15 @@
 <div class="home-container">
   <app-clock class="clock-widget"></app-clock>
+  <div class="corner-button">
+    <button (click)="toggleNotification(false)" *ngIf="notificationEnabled">
+      <i class="bi bi-volume-down-fill"></i>
+    </button>
+    <button
+      (click)="toggleNotification(true)"
+      class="mute"
+      *ngIf="!notificationEnabled"
+    >
+      <i class="bi bi-volume-mute-fill"></i>
+    </button>
+  </div>
 </div>

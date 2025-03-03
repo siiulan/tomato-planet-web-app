@@ -35,12 +35,28 @@
         </defs>
       </svg> -->
       <div class="clock-state-container">
-        <span class="display-text">{{
-          clockstate.remainingTime | timeFormat
-        }}</span>
-        <div class="mode-text" *ngIf="canDisplayPauseButton()" @fadeInOut>
-          {{ mode }}
+        <div class="display-text-container" *ngIf="!isEditing">
+          <div class="time-box">
+            <span class="time-text">{{
+              clockstate.remainingTime | timeFormat
+            }}</span>
+            <button
+              (click)="editClock()"
+              class="time-edit-button"
+              *ngIf="!isClockRunning()"
+            >
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+          </div>
+          <div class="mode-text" *ngIf="canDisplayPauseButton()" @fadeInOut>
+            {{ mode }}
+          </div>
         </div>
+        <clock-edit-view
+          *ngIf="isEditing"
+          [clockConfig]="clockConfig"
+          (closeEdit)="onEditComplete($event)"
+        />
       </div>
     </div>
   </div>
@@ -49,6 +65,7 @@
     <button
       class="play-button"
       (click)="startClock()"
+      [ngClass]="{ disabled: isEditing }"
       *ngIf="canDisplayStartButton()"
     >
       <i class="bi bi-play-fill"></i>

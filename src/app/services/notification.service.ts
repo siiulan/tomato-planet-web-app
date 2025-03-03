@@ -33,7 +33,11 @@ export class NotificationService {
     });
   }
 
-  setNotification(enabled: true) {
+  isNotificationEnabled() {
+    return this.enabled;
+  }
+
+  enableNotification(enabled: boolean) {
     this.enabled = enabled;
   }
 

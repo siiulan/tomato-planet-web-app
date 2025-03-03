@@ -33,7 +33,21 @@ export class ClockService {
     return this.clockState.asObservable();
   }
 
+  setClockConfig(clockConfig: ClockConfig) {
+    const curState = this.getClockState();
+    if (curState.status === ClockStatus.Stopped) {
+      this.clockConfig = clockConfig;
+      this.setClockState({
+        ...curState,
+        remainingTime: this.clockConfig.focusTime,
+      });
+    } else {
+      console.error('[ERROR] Setting Clock Config during clock running');
+    }
+  }
+
   setClockState(state: ClockState) {
+    console.log('setting', state);
     this.clockState.next(state);
   }
 

@@ -42,10 +42,11 @@ export class ClockComponent implements OnInit, OnDestroy {
     status: ClockStatus.Stopped,
     remainingTime: 0,
   };
-  private clockConfig: ClockConfig = {
+  protected clockConfig: ClockConfig = {
     focusTime: 0,
     restTime: 0,
   };
+  protected isEditing: boolean = false;
   private clockSubscription!: Subscription;
   private animationFrame: any;
   private lastTimestamp: number = 0;
@@ -85,6 +86,7 @@ export class ClockComponent implements OnInit, OnDestroy {
   private tomatoClockLogic(state: ClockState) {
     const prevState = _.cloneDeep(this.clockstate);
     this.clockstate = state;
+    console.log('state update', state, this);
     switch (prevState.status) {
       case ClockStatus.Stopped:
       case ClockStatus.Resting:
@@ -123,6 +125,20 @@ export class ClockComponent implements OnInit, OnDestroy {
     this.progressOffset = -this.circumference; // Reset progress ring
   }
 
+  editClock() {
+    this.isEditing = true;
+  }
+
+  onEditComplete(event?: ClockConfig) {
+    if (event) {
+      // Update the clock config if user clicked Finish
+      this.clockConfig = event ?? this.clockConfig;
+      this.totalTime = this.clockConfig.focusTime;
+      this.clockService.setClockConfig(this.clockConfig);
+    }
+    this.isEditing = false;
+  }
+
   protected canDisplayStartButton() {
     return (
       this.clockstate.status === ClockStatus.Paused ||
@@ -134,6 +150,14 @@ export class ClockComponent implements OnInit, OnDestroy {
     return (
       this.clockstate.status === ClockStatus.Started ||
       this.clockstate.status === ClockStatus.Resting
+    );
+  }
+
+  protected isClockRunning() {
+    return (
+      this.clockstate.status === ClockStatus.Started ||
+      this.clockstate.status === ClockStatus.Resting ||
+      this.clockstate.status === ClockStatus.Paused
     );
   }
 

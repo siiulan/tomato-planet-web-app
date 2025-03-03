@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  notificationEnabled: boolean = true;
+  constructor(private notificationService: NotificationService) {}
 
+  ngOnInit() {
+    this.notificationEnabled = this.notificationService.isNotificationEnabled();
+  }
+
+  toggleNotification(state: boolean) {
+    this.notificationEnabled = state;
+    this.notificationService.enableNotification(state);
+  }
 }

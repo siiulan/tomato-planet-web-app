@@ -1,0 +1,24 @@
+<mat-dialog-content class="info-dialog-box">
+  <img src="assets/icons/logo.svg" alt="Logo" class="logo" />
+
+  <div class="info-table">
+    <span class="info-label">Version:</span>
+    <span class="info-value">{{ version }}</span>
+
+    <span class="info-label">Release Date:</span>
+    <span class="info-value">{{ releaseDate }}</span>
+  </div>
+
+  <div class="author-bio">
+    <img
+      class="logo"
+      src="https://avatars.githubusercontent.com/u/54810735?s=400&u=8a3cd84dd0dda0d802c77d45db98dd427f6a5232&v=4"
+      alt="Author Logo"
+    />
+    <div class="contact-list"></div>
+  </div>
+</mat-dialog-content>
+<!-- <mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions> -->

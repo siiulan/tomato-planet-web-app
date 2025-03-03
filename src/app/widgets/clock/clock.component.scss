@@ -44,53 +44,75 @@
   position: relative;
 }
 
-.display-text {
+.display-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-box {
+  display: flex;
+}
+
+.time-text {
+  text-align: center;
   font-size: 4rem;
+  letter-spacing: 1px;
   font-weight: bold;
   z-index: 3; /* Foreground layer */
+}
+
+.time-edit-button {
+  left: 100%;
+  bottom: 50%;
+  position: absolute;
+  font-size: 1.5em;
+  color: var(--btn-aux-color);
+}
+
+.time-edit-button:hover {
+  color: var(--btn-aux-color-active);
 }
 
 .mode-text {
   position: absolute;
   top: 5rem;
-  text-align: center;
   font-size: 2rem;
 }
 
 .controls {
   display: flex;
   gap: 10px;
-}
 
-button {
-  width: 50px; /* Adjust size */
-  height: 50px;
-  border-radius: 50%; /* Makes it a perfect circle */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem; /* Adjust icon size */
-  transition: all 0.3s ease-in-out;
-  color: var(--button-text-color);
-  z-index: 2; /* Foreground layer */
-}
+  button {
+    width: 50px; /* Adjust size */
+    height: 50px;
+    border-radius: 50%; /* Makes it a perfect circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5rem; /* Adjust icon size */
+    transition: all 0.3s ease-in-out;
+    color: var(--btn-text-color);
+    z-index: 2; /* Foreground layer */
+  }
 
-button.play-button {
-  background-color: var(--play-button-color);
-}
+  button.play-button {
+    background-color: var(--play-button-color);
+  }
 
-button.pause-button {
-  background-color: var(--pause-button-color);
-}
+  button.pause-button {
+    background-color: var(--pause-button-color);
+  }
 
-button.stop-button {
-  background-color: var(--stop-button-color);
-}
+  button.stop-button {
+    background-color: var(--stop-button-color);
+  }
 
-button.disabled {
-  background-color: var(--disabled-button-color);
-  cursor: not-allowed;
-  opacity: 0.6;
+  button.disabled {
+    background-color: var(--btn-disabled-color);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 }

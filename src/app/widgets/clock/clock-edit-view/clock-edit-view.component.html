@@ -1,0 +1,32 @@
+<form [formGroup]="clockForm">
+  <div class="header-row">
+    <button type="button" (click)="cancelEdit()">
+      <i class="bi bi-x"></i>
+    </button>
+  </div>
+  <label> Focus Time (minutes): </label>
+  <input type="number" formControlName="focusTime" />
+  <div
+    *ngIf="
+      clockForm.get('focusTime')?.invalid && clockForm.get('focusTime')?.touched
+    "
+  >
+    Focus time must be at least 1 minute.
+  </div>
+
+  <label> Rest Time (minutes): </label>
+  <input type="number" formControlName="restTime" />
+  <div
+    *ngIf="
+      clockForm.get('restTime')?.invalid && clockForm.get('restTime')?.touched
+    "
+  >
+    Rest time must be at least 1 minute.
+  </div>
+
+  <div class="button-group">
+    <button type="button" (click)="finishEdit()" [disabled]="clockForm.invalid">
+      <i class="bi bi-check-lg"></i>
+    </button>
+  </div>
+</form>
