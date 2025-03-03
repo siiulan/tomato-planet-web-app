@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+.nav-container {
+  width: 100%;
+  height: var(--navbar-height);
+  background-color: transparent;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  font-size: 1.5em;
+  margin-right: 0.5rem;
+}
+
+.logo {
+  height: 48px;
+}

@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Default Light Theme */
+  --home-background-color: #f8f8f8ca;
+  --background-color: #f8f9fa;
+  --text-color: #333333;
+  --navbar-background-color: #ffffff;
+  --navbar-height: 50px;
+  --btn-text-color: #f5f5f5;
+  --btn-no-bg-text-color: #2e2e2e;
+  --btn-aux-color: #898989;
+  --btn-aux-color-active: #393939;
+  --play-button-color: #4caf50;
+  --pause-button-color: #ffc107;
+  --stop-button-color: #353535;
+  --btn-disabled-color: #626262;
+}
+
+/* Apply global styles using variables */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Orbitron", sans-serif, monospace !important;
+  min-height: 512px;
+
+  button {
+    border: none;
+    background: none;
+  }
+}
+
+/* Reset default margin and padding for all elements */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
