@@ -1,0 +1,10 @@
+<button
+  class="app-button"
+  [style.visibility]="!displayAppList ? 'hidden' : 'visible'"
+  (click)="toggleAppList()"
+>
+  <i class="bi bi-grid-fill"></i>
+</button>
+<div class="app-view-container" *ngIf="!displayAppList" [@listAnimation]>
+  <app-menu class="app"></app-menu>
+</div>

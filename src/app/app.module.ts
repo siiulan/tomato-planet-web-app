@@ -19,6 +19,9 @@ import {
   MatDialogTitle,
   MatDialogContent,
 } from '@angular/material/dialog';
+import { AppBoxComponent } from './widgets/app-box/app-box.component';
+import { AppMenuComponent } from './widgets/app-menu/app-menu.component';
+import { ThemeComponent } from './widgets/app/theme/theme.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import {
     TimeFormatPipe,
     ClockEditViewComponent,
     InfoDialogComponent,
+    AppBoxComponent,
+    AppMenuComponent,
+    ThemeComponent,
   ],
   imports: [
     CommonModule,
