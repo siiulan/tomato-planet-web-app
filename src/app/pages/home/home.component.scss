@@ -1,9 +1,11 @@
 .home-container {
+  position: relative;
   height: calc(100vh - var(--navbar-height) - 40px);
   margin: 20px;
   border-radius: 15px;
   background-color: var(--home-background-color);
-  border: 1px solid #9c9c9c13;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-box-border-color);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
@@ -13,14 +15,16 @@
 
 .app-widget {
   position: absolute;
-  top: calc(100% - 40px - 5rem);
-  right: calc(100% - 40px - 5rem);
+  bottom: 20px; /* Instead of calc(100% - 40px - 3rem) */
+  left: 20px; /* Instead of left */
+  z-index: 3;
 }
 
 .corner-button {
   position: absolute;
-  top: calc(100% - 40px - 3rem);
-  left: calc(100% - 40px - 3rem);
+  transform: translateZ(0); /* Forces a new stacking context */
+  bottom: 20px; /* Instead of calc(100% - 40px - 3rem) */
+  right: 20px; /* Instead of left */
 
   button {
     height: 3rem;

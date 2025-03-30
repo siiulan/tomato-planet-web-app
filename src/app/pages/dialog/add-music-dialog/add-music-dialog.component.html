@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Add Music</h2>
+<mat-dialog-content class="info-dialog-box">
+  <div class="add-track-form">
+    <div class="form-group">
+      <input
+        type="text"
+        class="url-input"
+        [formControl]="urlControl"
+        placeholder="Paste YouTube URL"
+      />
+      <button type="button" class="add-button" (click)="addTrack($event)">
+        <i class="bi bi-plus-lg"></i>
+      </button>
+    </div>
+    <div class="error-message" *ngIf="urlControl.invalid && urlControl.touched">
+      Please enter a valid YouTube URL
+    </div>
+  </div>
+</mat-dialog-content>

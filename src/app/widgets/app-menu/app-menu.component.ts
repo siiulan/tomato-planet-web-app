@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppMenuComponent {
   apps = ['Theme', 'Music'];
   selectedApp: string = this.apps[0];
+  @Output() closeMenu = new EventEmitter<boolean>();
 
   constructor() {}
 
@@ -15,6 +16,9 @@ export class AppMenuComponent {
 
   selectApp(app: string): void {
     this.selectedApp = app;
-    console.log(this.selectedApp);
+  }
+
+  closeAppMenu() {
+    this.closeMenu.emit(false);
   }
 }

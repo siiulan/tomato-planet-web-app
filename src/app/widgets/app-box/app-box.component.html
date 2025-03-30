@@ -1,10 +1,6 @@
-<button
-  class="app-button"
-  [style.visibility]="!displayAppList ? 'hidden' : 'visible'"
-  (click)="toggleAppList()"
->
+<button class="app-button" *ngIf="displayButton" (click)="toggleAppList()">
   <i class="bi bi-grid-fill"></i>
 </button>
-<div class="app-view-container" *ngIf="!displayAppList" [@listAnimation]>
-  <app-menu class="app"></app-menu>
+<div class="app-view-container" *ngIf="displayAppList" [@listAnimation]>
+  <app-menu class="app" (closeMenu)="onMenuClose($event)"></app-menu>
 </div>

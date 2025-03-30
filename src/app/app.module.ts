@@ -13,15 +13,14 @@ import { ClockEditViewComponent } from './widgets/clock/clock-edit-view/clock-ed
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { InfoDialogComponent } from './pages/dialog/info-dialog/info-dialog.component';
-import {
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogTitle,
-  MatDialogContent,
-} from '@angular/material/dialog';
 import { AppBoxComponent } from './widgets/app-box/app-box.component';
 import { AppMenuComponent } from './widgets/app-menu/app-menu.component';
 import { ThemeComponent } from './widgets/app/theme/theme.component';
+import { MusicPlayerComponent } from './widgets/app/music-player/music-player.component';
+import { AddMusicDialogComponent } from './pages/dialog/add-music-dialog/add-music-dialog.component';
+// Angular Material Module
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -35,6 +34,8 @@ import { ThemeComponent } from './widgets/app/theme/theme.component';
     AppBoxComponent,
     AppMenuComponent,
     ThemeComponent,
+    MusicPlayerComponent,
+    AddMusicDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -42,10 +43,9 @@ import { ThemeComponent } from './widgets/app/theme/theme.component';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogActions,
-    MatDialogClose,
-    MatDialogTitle,
-    MatDialogContent,
+    // Angular Material Module
+    MatDialogModule,
+    MatTooltipModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

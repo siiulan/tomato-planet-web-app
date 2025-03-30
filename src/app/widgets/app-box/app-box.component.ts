@@ -48,8 +48,17 @@ import {
 })
 export class AppBoxComponent {
   displayAppList: boolean = false;
+  displayButton: boolean = true;
 
   toggleAppList() {
     this.displayAppList = !this.displayAppList;
+    this.displayButton = false;
+  }
+
+  onMenuClose($event: boolean) {
+    this.displayAppList = $event;
+    setTimeout(() => {
+      this.displayButton = true;
+    }, 300); // async display to match animation
   }
 }

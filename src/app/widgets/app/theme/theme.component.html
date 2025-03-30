@@ -1,1 +1,16 @@
-<p>theme works!</p>
+<div class="theme-container">
+  <div
+    *ngFor="let theme of themes"
+    class="theme-card"
+    [class.selected]="theme.name === currentTheme?.name"
+    (click)="selectTheme(theme)"
+  >
+    <!-- Image or Video Preview -->
+    <div class="theme-preview">
+      <img [src]="theme.previewImgPath" [alt]="theme.name" />
+    </div>
+
+    <!-- Theme Name -->
+    <div class="theme-name">{{ theme.name }}</div>
+  </div>
+</div>

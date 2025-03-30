@@ -1,12 +1,15 @@
 html.dark-theme {
-  --home-background-color: #1e1e1e;
+  --home-background-color: #60606000;
   --background-color: #121212;
-  --text-color: #e0e0e0;
+  --text-color: #ffffff;
+  --glass-box-border-color: #7f7f7feb;
   --navbar-background-color: #1f1f1f;
   --navbar-height: 50px;
+  --clock-circle-bg-opacity: 0.3;
+  --app-sidebar-bg-color: #9a9a9a11;
   --btn-text-color: #e0e0e0;
-  --btn-no-bg-text-color: #d0d0d0;
-  --btn-aux-color: #757575;
+  --btn-no-bg-text-color: #ffffff;
+  --btn-aux-color: #dadada;
   --btn-aux-color-active: #bdbdbd;
   --play-button-color: #66bb6a;
   --pause-button-color: #ffb74d;
@@ -14,4 +17,15 @@ html.dark-theme {
   --btn-disabled-color: #424242;
   --btn-transparent-bg-color: #a3a3a32b;
   --btn-border-color: #ffffff7d;
+  --app-window-bg-color: #dbdbdb25;
+  --menu-item-active-bg-color: rgba(153, 153, 153, 0.322);
+  --menu-item-active-icon-color: linear-gradient(45deg, #8a3cf6, #ea63b4);
+  --app-player-card-player-background: #dedede76;
+  --app-player-card-player-play-item-background: #ededed76;
+  --app-player-card-player-play-active-item-background: #eeeeee;
+  --app-player-card-player-title-color: #eaeaea;
+  --app-player-card-player-text-color: #c3c3c3;
+  --app-player-card-player-control-button-text-color: #f0f0f0;
+  --app-player-card-player-control-button-hover-text-color: #e4e4e4;
+  --app-player-card-player-control-button-disable-text-color: #4a4a4a;
 }
