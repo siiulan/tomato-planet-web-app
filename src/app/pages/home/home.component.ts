@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
     this.notificationEnabled = this.notificationService.isNotificationEnabled();
   }
 
-  toggleNotification(state: boolean) {
-    this.notificationEnabled = state;
-    this.notificationService.enableNotification(state);
+  toggleNotification() {
+    this.notificationEnabled = !this.notificationEnabled;
+    this.notificationService.enableNotification(this.notificationEnabled);
   }
 }

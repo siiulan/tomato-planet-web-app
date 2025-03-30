@@ -1,15 +1,21 @@
 <div class="home-container">
+  <app-box class="app-widget"></app-box>
   <app-clock class="clock-widget"></app-clock>
   <div class="corner-button">
-    <button (click)="toggleNotification(false)" *ngIf="notificationEnabled">
-      <i class="bi bi-volume-down-fill"></i>
-    </button>
     <button
-      (click)="toggleNotification(true)"
-      class="mute"
-      *ngIf="!notificationEnabled"
+      mat-raised-button
+      matTooltip="Enable/Disable Notification Sound"
+      (click)="toggleNotification()"
     >
-      <i class="bi bi-volume-mute-fill"></i>
+      <i
+        class="bi"
+        [ngClass]="
+          notificationEnabled
+            ? ' bi-volume-down-fill'
+            : 'bi bi-volume-mute-fill'
+        "
+        class="bi"
+      ></i>
     </button>
   </div>
 </div>

@@ -1,0 +1,54 @@
+.theme-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // Ensures exactly 3 columns per row
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+}
+
+.theme-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--glass-box-border-color);
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  &.selected {
+    border: 3px solid #007bff; // Highlight border for selected theme
+  }
+
+  .theme-preview {
+    height: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    border-radius: 12px 12px 0 0;
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+    }
+  }
+
+  .theme-name {
+    text-align: center;
+    padding: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: var(--background-color);
+    color: var(--text-color);
+    border-radius: 0 0 12px 12px;
+  }
+}

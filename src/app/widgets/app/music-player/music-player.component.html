@@ -1,0 +1,129 @@
+<div class="music-player-container">
+  <!-- Main Player Section -->
+  <div class="player-card" *ngIf="currentTrack">
+    <div class="player-header">
+      <div class="thumbnail">
+        <img
+          [src]="currentTrack.previewImgPath"
+          [alt]="currentTrack.title"
+          class="cover-image"
+        />
+      </div>
+
+      <div class="track-info">
+        <div class="marquee-container">
+          <div class="marquee-content">
+            <h3 class="track-title">{{ currentTrack.title }}</h3>
+            <!-- Duplicate for marquee effect-->
+            <h3 class="track-title">{{ currentTrack.title }}</h3>
+          </div>
+        </div>
+        <div class="time-display">
+          {{ formatTime(playerState.currentTime) }} /
+          {{ formatTime(playerState.duration) }}
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-container">
+      <input
+        type="range"
+        class="progress-slider"
+        [value]="playerState.progress"
+        min="0"
+        max="100"
+        (input)="seek($event)"
+      />
+    </div>
+
+    <div class="controls">
+      <button
+        class="control-button"
+        (click)="playPrevious()"
+        [disabled]="!currentTrack"
+      >
+        <i class="bi bi-skip-backward-fill"></i>
+      </button>
+
+      <button
+        class="control-button play-pause"
+        (click)="togglePlayPause()"
+        [disabled]="!currentTrack"
+      >
+        <i
+          class="bi"
+          [ngClass]="playerState.isPlaying ? 'bi-pause-fill' : 'bi-play-fill'"
+        ></i>
+      </button>
+
+      <button
+        class="control-button"
+        (click)="playNext()"
+        [disabled]="!currentTrack"
+      >
+        <i class="bi bi-skip-forward-fill"></i>
+      </button>
+
+      <div class="volume-control">
+        <i class="bi bi-volume-up-fill"></i>
+        <input
+          type="range"
+          class="volume-slider"
+          [value]="playerState.volume"
+          min="0"
+          max="100"
+          (input)="setVolume($event)"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Playlist Section -->
+  <div class="playlist-section">
+    <div class="playlist-header">
+      <h3>Playlist</h3>
+      <button type="button" class="add-button" (click)="addTrack($event)">
+        <i class="bi bi-plus-lg"></i>
+      </button>
+    </div>
+
+    <div class="playlist-tracks" *ngIf="playlist.length > 0">
+      <div
+        class="playlist-item"
+        *ngFor="let track of playlist"
+        [class.active]="currentTrack.id === track.id"
+        (click)="playTrack(track)"
+      >
+        <div class="track-thumbnail">
+          <img
+            [src]="track.previewImgPath"
+            [alt]="track.title"
+            class="track-thumbnail-img"
+          />
+          <div
+            class="play-indicator"
+            *ngIf="currentTrack?.id === track.id && playerState.isPlaying"
+          >
+            <div class="play-indicator-bar"></div>
+            <div class="play-indicator-bar"></div>
+            <div class="play-indicator-bar"></div>
+          </div>
+        </div>
+        <div class="playlist-track-info">
+          <span class="playlist-track-title">{{ track.title }}</span>
+        </div>
+        <button
+          class="delete-track-button"
+          (click)="removeTrack(track, $event)"
+        >
+          <i class="bi bi-x-lg"></i>
+          <!-- Bootstrap trash icon -->
+        </button>
+      </div>
+    </div>
+
+    <div class="empty-playlist" *ngIf="playlist.length === 0">
+      <p>Your playlist is empty</p>
+    </div>
+  </div>
+</div>

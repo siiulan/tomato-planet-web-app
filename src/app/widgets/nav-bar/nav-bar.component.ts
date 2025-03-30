@@ -8,6 +8,8 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../../pages/dialog/info-dialog/info-dialog.component';
+import { Subscription } from 'rxjs';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'nav-bar',
@@ -16,6 +18,17 @@ import { InfoDialogComponent } from '../../pages/dialog/info-dialog/info-dialog.
 })
 export class NavBarComponent {
   readonly dialog = inject(MatDialog);
+  private subscription = new Subscription();
+  logoPath = '';
+  constructor(private themeService: ThemeService) {}
+
+  ngOnInit() {
+    this.subscription.add(
+      this.themeService.theme$.subscribe((theme) => {
+        this.logoPath = theme.logoImgPath;
+      })
+    );
+  }
 
   openDialog(): void {
     this.dialog.open(InfoDialogComponent, {
